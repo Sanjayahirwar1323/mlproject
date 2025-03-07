@@ -9,7 +9,7 @@ def get_requirements(file_path:str) ->List[str]:##reads a file (typically requir
     '''
     requirements=[] ## makeing as a empty list 
     with open(file_path) as file_obj: ## open and create as tem file object 
-        requirements=file_obj. readlines() ## one one element will be read 
+        requirements=file_obj.readlines() ## one one element will be read 
         requirements=[req. replace("\n","") for req in requirements] ## problem wne we go to next line/n will added to remove this replace with blank
 
         if HYPEN_E_DOT in requirements:

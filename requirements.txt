@@ -1,0 +1,4 @@
+pandas
+numpy 
+seaborn
+-e . ## when we try to install above or run req.txt DIRECLTY setup.py will be excuted or run

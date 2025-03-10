@@ -21,5 +21,5 @@ version='0.0.1',
 author='Sanjay',
 author_email='sanjayahirwar1323@gmail.com',
 packages=find_packages(), ## when findpackages running it will see in how many you have__init__.py then it will directly consider this sourse or folder or src as package itself
-install_requires=get_requirements('requirements.txt')
+install_requires=get_requirements('requirements.txt') 
 )

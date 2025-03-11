@@ -1,4 +1,11 @@
 pandas
 numpy 
 seaborn
--e . ## when we try to install above or run req.txt DIRECLTY setup.py will be excuted or run
+matplotlib
+scikit-learn 
+catboost
+xgboost
+dill
+Flask
+#-e . ## when we try to install above or run req.txt DIRECLTY setup.py will be excuted or run
+## WHEN YOU WANT TO INSTALL REQIREMENTS LIKE PANDAS COMMENT DOWN #-E BECAUSE WE NOT NEED ACCESS SETUP

@@ -11,6 +11,9 @@ from dataclasses import dataclass
 from src.component.data_transformation import DataTransformation ## from data transformation file 
 from src.component.data_transformation import DataTransformationConfig
 
+from src.component.model_trainer import ModelTrainerConfig 
+from src.component.model_trainer import ModelTrainer
+
 @dataclass ##automatically generates special methods like __init__(), __repr__(), and __eq__() ## mainlly used when we have variable
 class DataIngestionConfig: ##The DataIngestionConfig class provides a structured way to define and store paths for data ingestion.
     train_data_path:str=os.path.join("artifacts","train.csv") ## to store the path to save the training data set || output will store under artifacts folder || train.csv is file name will save in the path 
@@ -52,9 +55,20 @@ class DataIngestion:
 
     ## atrifacts folder will create in the current directory where the code is running and the train.csv and test.csv will save in the artifacts folder
 
+#if __name__=="__main__": ## 1st combine data ingestion then 2nd step compine data transformation
+    #obj=DataIngestion() ## create the object of the class
+    #train_data,test_data=obj.initiate_data_ingestion()
+    ## 2nd step
+    #data_transformation=DataTransformation() ## create the object of the class
+    #data_transformation.initiate_data_transformation(train_data,test_data) ## call the method to read the data and split the data in train test
+    ## pkl file will created
+
 if __name__=="__main__": ## 1st combine data ingestion then 2nd step compine data transformation
     obj=DataIngestion() ## create the object of the class
     train_data,test_data=obj.initiate_data_ingestion()
     ## 2nd step
     data_transformation=DataTransformation() ## create the object of the class
-    data_transformation.initiate_data_transformation(train_data,test_data) ## call the method to read the data and split the data in train test
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data) ## call the method to read the data and split the data in train test
+    ## pkl file will created
+    modeltrainer=ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr)) ## train the model

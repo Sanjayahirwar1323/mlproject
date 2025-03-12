@@ -8,6 +8,8 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass 
 ## to store input such as where we have to store the train test etc we create another class
+from src.component.data_transformation import DataTransformation ## from data transformation file 
+from src.component.data_transformation import DataTransformationConfig
 
 @dataclass ##automatically generates special methods like __init__(), __repr__(), and __eq__() ## mainlly used when we have variable
 class DataIngestionConfig: ##The DataIngestionConfig class provides a structured way to define and store paths for data ingestion.
@@ -44,8 +46,15 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys) ## if any error occur then it will raise the custom exception
 
-if __name__=="__main__":
-    obj=DataIngestion() ## create the object of the class
-    obj.initiate_data_ingestion() ## call the method to read the data and split the data in train test
+##if __name__=="__main__":
+   #obj=DataIngestion() ## create the object of the class
+    #obj.initiate_data_ingestion() ## call the method to read the data and split the data in train test
 
     ## atrifacts folder will create in the current directory where the code is running and the train.csv and test.csv will save in the artifacts folder
+
+if __name__=="__main__": ## 1st combine data ingestion then 2nd step compine data transformation
+    obj=DataIngestion() ## create the object of the class
+    train_data,test_data=obj.initiate_data_ingestion()
+    ## 2nd step
+    data_transformation=DataTransformation() ## create the object of the class
+    data_transformation.initiate_data_transformation(train_data,test_data) ## call the method to read the data and split the data in train test
